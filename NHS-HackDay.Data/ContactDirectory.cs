@@ -18,6 +18,11 @@ namespace NHS_HackDay.Data
       teams = new List<Team>();
     }
 
+    public List<Contact> GetAll()
+    {
+      return contacts;
+    }
+
     public Contact FindContact(string id)
     {
       return contacts.SingleOrDefault(m => m.Id == id);
@@ -29,7 +34,6 @@ namespace NHS_HackDay.Data
 
       if (found != null)
       {
-        //found = contact;
         contacts.Remove(found);
         contacts.Add(contact);
       }

@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NHS_HackDay.Common;
 
 namespace NHS_HackDay.Web.Controllers
 {
   public class SearchController : Controller
   {
-    //
-    // GET: /Search/
+    private IContactDirectory directory;
+
+    public SearchController(IContactDirectory directory)
+    {
+      this.directory = directory;
+    }
 
     public ActionResult Index()
     {
-      return View();
+      var contacts = directory.GetAll();
+      return View(contacts);
     }
 
     public ActionResult FindPerson()

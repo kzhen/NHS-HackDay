@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model List<NHS_HackDay.Common.Contact>
+
+@{
+  ViewBag.Title = "Index";
 }
 
 <h2>Directory</h2>
@@ -12,14 +14,12 @@
       <th>Department</th>
     </tr>
   </thead>
-  <tr>
-    <td>Ken</td>
-    <td>111</td>
-    <td>Something</td>
-  </tr>
-  <tr>
-    <td>Bob</td>
-    <td>222</td>
-    <td>Else</td>
-  </tr>
+  @foreach (var item in Model)
+  {
+    <tr>
+      <td>@item.Name</td>
+      <td>@item.Id</td>
+      <td></td>
+    </tr>
+  }
 </table>

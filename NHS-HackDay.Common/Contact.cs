@@ -9,6 +9,7 @@ namespace NHS_HackDay.Common
   public class Contact
   {
     public string Id { get; set; }
+    public string Name { get; set; }
     public string MobileNumber { get; set; }
     public string DeskPhone { get; set; }
   }

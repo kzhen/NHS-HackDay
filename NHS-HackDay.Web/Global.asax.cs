@@ -25,8 +25,8 @@ namespace NHS_HackDay.Web
     {
       var builder = new ContainerBuilder();
 
-      builder.Register<IWelcomeRouter>(m => new WelcomeRouter());
-      builder.Register<IContactDirectory>(m => new ContactDirectory());
+      builder.Register<IWelcomeRouter>(m => new WelcomeRouter(m.Resolve<IContactDirectory>())).InstancePerHttpRequest();
+      builder.Register<IContactDirectory>(m => new ContactDirectory()).SingleInstance();
       builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
       return builder.Build();

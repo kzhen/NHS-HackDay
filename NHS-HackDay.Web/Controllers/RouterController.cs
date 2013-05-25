@@ -27,9 +27,31 @@ namespace NHS_HackDay.Web.Controllers
     }
 
     [HttpPost]
-    public ActionResult PingPerson()
+    public ActionResult PingPerson(VoiceRequest request)
     {
-      return View();
+      var response = router.PingPerson(request);
+
+      Response.ContentType = "text/xml";
+      return Content(response.Element.ToString());
     }
+
+    [HttpPost]
+    public ActionResult PreConnect(VoiceRequest request)
+    {
+      var response = router.PreConnect(request);
+
+      Response.ContentType = "text/xml";
+      return Content(response.Element.ToString());
+    }
+
+    [HttpPost]
+    public ActionResult RespondToPreConnect(VoiceRequest request)
+    {
+      var response = router.RespondToPreConnect(request);
+
+      Response.ContentType = "text/xml";
+      return Content(response.Element.ToString());
+    }
+    
   }
 }

@@ -1,12 +1,29 @@
-﻿@{
-    ViewBag.Title = "Me";
+﻿@model NHS_HackDay.Common.Contact
+
+@{
+  ViewBag.Title = "Me";
 }
 
 <h2>My Settings</h2>
 
-<table class="table">
-  <tr>
-    <td>Mobile Number</td>
-    <td>@Html.TextBox("Mobile")</td>
-  </tr>
-</table>
+@using (Html.BeginForm())
+{
+  <table class="table">
+    <tr>
+      <td>Id</td>
+      <td>@Html.TextBoxFor(m => m.Id)</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>@Html.TextBoxFor(m => m.Name)</td>
+    </tr>
+    <tr>
+      <td>Mobile Number</td>
+      <td>@Html.TextBoxFor(m => m.MobileNumber)</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Update" /></td>
+    </tr>
+  </table>
+}

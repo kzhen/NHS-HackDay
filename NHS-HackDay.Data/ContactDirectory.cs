@@ -41,5 +41,25 @@ namespace NHS_HackDay.Data
         contact.MobileNumber = number;
       }
     }
+
+    public Contact FindPerson(string id)
+    {
+      return contacts.SingleOrDefault(m => m.Id == id);
+    }
+
+
+    public void UpdateContact(Contact contact)
+    {
+      var found = contacts.SingleOrDefault(m => m.Id == contact.Id);
+
+      if (found != null)
+      {
+        found = contact;
+      }
+      else
+      {
+        contacts.Add(contact);
+      }
+    }
   }
 }

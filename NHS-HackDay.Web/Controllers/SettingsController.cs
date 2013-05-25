@@ -9,6 +9,13 @@ namespace NHS_HackDay.Web.Controllers
 {
   public class SettingsController : Controller
   {
+    private IContactDirectory directory;
+
+    public SettingsController(IContactDirectory directory)
+    {
+      this.directory = directory;
+    }
+
     //
     // GET: /Settings/
 
@@ -17,14 +24,24 @@ namespace NHS_HackDay.Web.Controllers
       return View();
     }
 
-    public ActionResult Me()
+    public ActionResult Me(string id)
     {
+      var person = directory.FindPerson(id);
+
+      if (person != null)
+      {
+        return View(person);
+      }
+
       return View();
     }
 
     [HttpPost]
-    public ActionResult Me(MySettings settings)
+    public ActionResult Me(Contact contact)
     {
+
+      directory.UpdateContact(contact);
+
       return View();
     }
   }

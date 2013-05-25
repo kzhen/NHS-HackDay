@@ -59,6 +59,10 @@
       <Project>{f4d5bbc7-e1c8-4ebc-a2ee-e1ba35e29f71}</Project>
       <Name>NHS-HackDay.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NHS-HackDay.Data\NHS-HackDay.Data.csproj">
+      <Project>{5f20a195-7cab-419a-bd82-f63b22663458}</Project>
+      <Name>NHS-HackDay.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

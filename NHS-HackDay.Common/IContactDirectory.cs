@@ -8,7 +8,11 @@ namespace NHS_HackDay.Common
 {
   public interface IContactDirectory
   {
-    public string GetActualNumber(string identifier);
-    public void SetActualNumber(string identifier, string number);
+    string GetActualNumber(string identifier);
+    void SetActualNumber(string identifier, string number);
+
+    Contact FindPerson(string id);
+
+    void UpdateContact(Contact contact);
   }
 }

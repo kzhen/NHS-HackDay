@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHS-HackDay.Data", "NHS-Hac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHS-HackDay.Common", "NHS-HackDay.Common\NHS-HackDay.Common.csproj", "{F4D5BBC7-E1C8-4EBC-A2EE-E1BA35E29F71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHS-HackDay.Routing", "NHS-HackDay.Routing\NHS-HackDay.Routing.csproj", "{B656610C-7E9D-4572-9C36-AEDD0A7F9E9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{F4D5BBC7-E1C8-4EBC-A2EE-E1BA35E29F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4D5BBC7-E1C8-4EBC-A2EE-E1BA35E29F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4D5BBC7-E1C8-4EBC-A2EE-E1BA35E29F71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B656610C-7E9D-4572-9C36-AEDD0A7F9E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B656610C-7E9D-4572-9C36-AEDD0A7F9E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B656610C-7E9D-4572-9C36-AEDD0A7F9E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B656610C-7E9D-4572-9C36-AEDD0A7F9E9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

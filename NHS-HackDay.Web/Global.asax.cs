@@ -6,16 +6,37 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Autofac;
+using Autofac.Integration.Mvc;
+using NHS_HackDay.Common;
+using NHS_HackDay.Data;
+using NHS_HackDay.Routing;
+
 
 namespace NHS_HackDay.Web
 {
   // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
   // visit http://go.microsoft.com/?LinkId=9394801
 
+
   public class MvcApplication : System.Web.HttpApplication
   {
+    private IContainer BuildContainer()
+    {
+      var builder = new ContainerBuilder();
+
+      builder.Register<IWelcomeRouter>(m => new WelcomeRouter());
+      builder.Register<IContactDirectory>(m => new ContactDirectory());
+      builder.RegisterControllers(typeof(MvcApplication).Assembly);
+
+      return builder.Build();
+    }
+
     protected void Application_Start()
     {
+      var container = BuildContainer();
+      DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
       AreaRegistration.RegisterAllAreas();
 
       WebApiConfig.Register(GlobalConfiguration.Configuration);

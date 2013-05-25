@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHS-HackDay.Web", "NHS-HackDay.Web\NHS-HackDay.Web.csproj", "{DFE70752-4E61-4CA1-9B29-4675557B3C9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHS-HackDay.Data", "NHS-HackDay.Data\NHS-HackDay.Data.csproj", "{5F20A195-7CAB-419A-BD82-F63B22663458}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHS-HackDay.Common", "NHS-HackDay.Common\NHS-HackDay.Common.csproj", "{F4D5BBC7-E1C8-4EBC-A2EE-E1BA35E29F71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFE70752-4E61-4CA1-9B29-4675557B3C9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE70752-4E61-4CA1-9B29-4675557B3C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE70752-4E61-4CA1-9B29-4675557B3C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE70752-4E61-4CA1-9B29-4675557B3C9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F20A195-7CAB-419A-BD82-F63B22663458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F20A195-7CAB-419A-BD82-F63B22663458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F20A195-7CAB-419A-BD82-F63B22663458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F20A195-7CAB-419A-BD82-F63B22663458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D5BBC7-E1C8-4EBC-A2EE-E1BA35E29F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D5BBC7-E1C8-4EBC-A2EE-E1BA35E29F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D5BBC7-E1C8-4EBC-A2EE-E1BA35E29F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D5BBC7-E1C8-4EBC-A2EE-E1BA35E29F71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

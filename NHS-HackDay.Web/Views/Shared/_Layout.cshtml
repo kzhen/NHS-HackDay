@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>@ViewBag.Title</title>
+  @Styles.Render("~/bundles/bootstrap")
+  @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#">$#@@% Bleepers!</a>
+      <ul class="nav">
+        <li class="active"><a href="#">Introduction</a></li>
+        <li>@Html.ActionLink("Find Person", "FindPerson", "Search")</li>
+        <li>@Html.ActionLink("Find Team", "FindTeam", "Search")</li>
+        <li>@Html.ActionLink("My Settings", "Me", "Settings")</li>
+      </ul>
+    </div>
+  </div>
+
+  @RenderBody()
+
+  @Scripts.Render("~/bundles/jquery")
+  @RenderSection("scripts", required: false)
+</body>
+</html>

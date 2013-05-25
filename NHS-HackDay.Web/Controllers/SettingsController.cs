@@ -26,7 +26,7 @@ namespace NHS_HackDay.Web.Controllers
 
     public ActionResult Me(string id)
     {
-      var person = directory.FindPerson(id);
+      var person = directory.FindContact(id);
 
       if (person != null)
       {
@@ -39,7 +39,6 @@ namespace NHS_HackDay.Web.Controllers
     [HttpPost]
     public ActionResult Me(Contact contact)
     {
-
       directory.UpdateContact(contact);
 
       return View();

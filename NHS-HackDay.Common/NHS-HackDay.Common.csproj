@@ -57,6 +57,7 @@
     <Compile Include="IWelcomeRouter.cs" />
     <Compile Include="MySettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Team.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

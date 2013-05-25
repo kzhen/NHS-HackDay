@@ -10,43 +10,18 @@ namespace NHS_HackDay.Data
   public class ContactDirectory : IContactDirectory
   {
     private List<Contact> contacts;
+    private List<Team> teams;
 
     public ContactDirectory()
     {
       contacts = new List<Contact>();
+      teams = new List<Team>();
     }
 
-    public string GetActualNumber(string identifier)
-    {
-      var contact = contacts.SingleOrDefault(m => m.Id.Equals(identifier));
-
-      if (contact != null)
-      {
-        return contact.MobileNumber;
-      }
-
-      throw new ContactNotFoundException();
-    }
-
-    public void SetActualNumber(string identifier, string number)
-    {
-      var contact = contacts.SingleOrDefault(m => m.Id.Equals(identifier));
-
-      if (contact == null)
-      {
-        contacts.Add(new Contact() { Id = identifier, MobileNumber = number });
-      }
-      else
-      {
-        contact.MobileNumber = number;
-      }
-    }
-
-    public Contact FindPerson(string id)
+    public Contact FindContact(string id)
     {
       return contacts.SingleOrDefault(m => m.Id == id);
     }
-
 
     public void UpdateContact(Contact contact)
     {
@@ -54,7 +29,9 @@ namespace NHS_HackDay.Data
 
       if (found != null)
       {
-        found = contact;
+        //found = contact;
+        contacts.Remove(found);
+        contacts.Add(contact);
       }
       else
       {

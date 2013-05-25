@@ -36,12 +36,32 @@ namespace NHS_HackDay.Routing
     {
       TwilioResponse response = new TwilioResponse();
 
-      var person = directory.FindPerson(request.Digits);
+      var person = directory.FindContact(request.Digits);
 
       if (person != null)
       {
-        response.Say("We are now contacting " + person.Name + ", please hold the line");
-        response.Dial(new Number(person.MobileNumber, new { url = "/Router/PreConnect" }), new { callerId = "+442033229301" });
+        if (person.AcceptCalls)
+        {
+
+          response.Say("We are now contacting " + person.Name + ", please hold the line");
+          response.Dial(new Number(person.MobileNumber, new { url = "/Router/PreConnect" }), new { callerId = "+442033229301" });
+        }
+        else
+        {
+          var divertedTo = directory.FindContact(person.DivertToId);
+
+          if (divertedTo != null)
+          {
+            response.Say(person.Name + " is not currently accepting calls. Diverting you to " + divertedTo.Name);
+            response.Dial(new Number(divertedTo.MobileNumber, new { url = "/Router/PreConnect" }), new { callerId = "+442033229301" });
+          }
+          else
+          {
+            response.Say("Unable to find someone to divert to...");
+            response.Hangup();
+          }
+
+        }
       }
       else
       {

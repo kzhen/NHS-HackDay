@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace NHS_HackDay.Common
 {
-  public interface IContactDirectory
+  public class Team
   {
-    Contact FindContact(string id);
-    void UpdateContact(Contact contact);
+    public string Name { get; set; }
+    public List<Contact> TeamMembers { get; set; }
   }
 }

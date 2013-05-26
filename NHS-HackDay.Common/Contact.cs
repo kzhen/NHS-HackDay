@@ -16,6 +16,7 @@ namespace NHS_HackDay.Common
     public string MobileNumber { get; set; }
     public string DeskPhone { get; set; }
     public string DivertToId { get; set; }
+    public string Department { get; set; }
     public List<Team> Teams { get; set; }
   }
 }

@@ -23,80 +23,30 @@ namespace NHS_HackDay.Routing
       TwilioResponse response = new TwilioResponse();
 
       response.Say("Welcome to Saint Georges Hospital Directory.");
-      
-      response.BeginGather(new { finishOnKey = "#", action = "/Router/PingPerson" });
-      response.Say("Please enter the 4 digit identifier for the person you wish to contact, followed by the hash button.");
+
+      response.BeginGather(new { finishOnKey = "#", action = "/Router/InitialOptions" });
+      response.Say("Please enter your four digit I D then press the hash button");
       response.EndGather();
 
       return response;
     }
 
-
-    public TwilioResponse PingPerson(VoiceRequest request)
+    public TwilioResponse InitialOptions(VoiceRequest request)
     {
       TwilioResponse response = new TwilioResponse();
 
-      var person = directory.GetContact(request.Digits);
+      var id = request.Digits;
 
-      if (person != null)
+      if (!directory.ExtensionExists(id))
       {
-        if (person.AcceptCalls)
-        {
-
-          response.Say("We are now contacting " + person.Name + ", please hold the line");
-          response.Dial(new Number(person.MobileNumber, new { url = "/Router/PreConnect" }), new { callerId = "+442033229301" });
-        }
-        else
-        {
-          var divertedTo = directory.GetContact(person.DivertToId);
-
-          if (divertedTo != null)
-          {
-            response.Say(person.Name + " is not currently accepting calls. Diverting you to " + divertedTo.Name);
-            response.Dial(new Number(divertedTo.MobileNumber, new { url = "/Router/PreConnect" }), new { callerId = "+442033229301" });
-          }
-          else
-          {
-            response.Say("Unable to find someone to divert to...");
-            response.Hangup();
-          }
-
-        }
-      }
-      else
-      {
-        response.Say("Person not found");
-      }
-
-      return response;
-    }
-
-    public TwilioResponse PreConnect(VoiceRequest request)
-    {
-      var response = new TwilioResponse();
-
-      response.BeginGather(new { numDigits = 1, action = "/Router/RespondToPreConnect" });
-      response.Say("You have an incoming call...");
-      response.Say("Press 1 to be connected");
-      response.Say("Press 2 to hangup");
-      response.EndGather();
-      response.Hangup();
-
-      return response;
-    }
-
-    public TwilioResponse RespondToPreConnect(VoiceRequest request)
-    {
-      var response = new TwilioResponse();
-
-      if (request.Digits != "1")
-      {
+        response.Say("We couldn't find your I D.");
         response.Hangup();
       }
-      else
-      {
-        response.Say("Connecting...");
-      }
+
+      response.BeginGather(new { finishOnKey = "#", action = string.Format("/Router/PingInital?callingPartyId={0}", id) });
+      response.Say("To contact an individual, enter their 4 digit I D and then press the hash button");
+      response.Say("To contact a team, enter star followed by the 4 digit I D and then press the hash button");
+      response.EndGather();
 
       return response;
     }

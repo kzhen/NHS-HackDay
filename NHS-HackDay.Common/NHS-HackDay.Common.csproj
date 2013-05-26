@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Contact.cs" />
     <Compile Include="ContactNotFoundException.cs" />
+    <Compile Include="IConnecterRouter.cs" />
     <Compile Include="IContactDirectory.cs" />
     <Compile Include="IWelcomeRouter.cs" />
     <Compile Include="MySettings.cs" />

@@ -11,11 +11,6 @@ namespace NHS_HackDay.Common
   public interface IWelcomeRouter
   {
     TwilioResponse Greet(VoiceRequest request);
-
-    TwilioResponse PingPerson(VoiceRequest request);
-
-    TwilioResponse PreConnect(VoiceRequest request);
-
-    TwilioResponse RespondToPreConnect(VoiceRequest request);
+    TwilioResponse InitialOptions(VoiceRequest request);
   }
 }

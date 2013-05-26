@@ -12,5 +12,10 @@ namespace NHS_HackDay.Common
     Contact GetContact(string id);
     void UpdateContact(Contact contact);
     List<Contact> FindContact(string contactName);
+    bool ExtensionExists(string id);
+
+    Contact GetTeamMember(string teamId, int idx);
+
+    Team GetTeam(string teamId);
   }
 }

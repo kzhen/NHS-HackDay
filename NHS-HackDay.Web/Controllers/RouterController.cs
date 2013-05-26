@@ -10,35 +10,46 @@ namespace NHS_HackDay.Web.Controllers
 {
   public class RouterController : Controller
   {
-    private IWelcomeRouter router;
+    private IWelcomeRouter welcomeRouter;
+    private IConnecterRouter connectorRouter;
 
-    public RouterController(IWelcomeRouter welcomeRouter)
+    public RouterController(IWelcomeRouter welcomeRouter, IConnecterRouter connectorRouter)
     {
-      this.router = welcomeRouter;
+      this.welcomeRouter = welcomeRouter;
+      this.connectorRouter = connectorRouter;
     }
 
     [HttpPost]
     public ActionResult Index(VoiceRequest request)
     {
-      var response = router.Greet(request);
+      var response = welcomeRouter.Greet(request);
 
       Response.ContentType = "text/xml";
       return Content(response.Element.ToString());
     }
 
     [HttpPost]
-    public ActionResult PingPerson(VoiceRequest request)
+    public ActionResult InitialOptions(VoiceRequest request)
     {
-      var response = router.PingPerson(request);
+      var response = welcomeRouter.InitialOptions(request);
 
       Response.ContentType = "text/xml";
       return Content(response.Element.ToString());
     }
 
     [HttpPost]
-    public ActionResult PreConnect(VoiceRequest request)
+    public ActionResult PingInital(VoiceRequest request, string callingPartyId)
     {
-      var response = router.PreConnect(request);
+      var response = connectorRouter.InitiatePing(request, callingPartyId);
+
+      Response.ContentType = "text/xml";
+      return Content(response.Element.ToString());
+    }
+
+    [HttpPost]
+    public ActionResult PreConnect(VoiceRequest request, string callingPartyId)
+    {
+      var response = connectorRouter.PreConnect(request, callingPartyId);
 
       Response.ContentType = "text/xml";
       return Content(response.Element.ToString());
@@ -47,7 +58,16 @@ namespace NHS_HackDay.Web.Controllers
     [HttpPost]
     public ActionResult RespondToPreConnect(VoiceRequest request)
     {
-      var response = router.RespondToPreConnect(request);
+      var response = connectorRouter.RespondToPreConnect(request);
+
+      Response.ContentType = "text/xml";
+      return Content(response.Element.ToString());
+    }
+
+    [HttpPost]
+    public ActionResult NextTeamMember(string callingPartyId, string teamId, int idx)
+    {
+      var response = connectorRouter.PingTeamMember(teamId, callingPartyId, ++idx);
 
       Response.ContentType = "text/xml";
       return Content(response.Element.ToString());

@@ -1,0 +1,25 @@
+﻿@model NHS_HackDay.Web.Models.SearchResultsViewModel
+
+@{
+  ViewBag.Title = "Search Results";
+}
+
+<h2>Search Results for @Model.SearchedValue</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Extension</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model.Results)
+    {
+      <tr>
+        <td>@item.Name</td>
+        <td>@item.Id</td>
+      </tr>
+    }
+  </tbody>
+</table>

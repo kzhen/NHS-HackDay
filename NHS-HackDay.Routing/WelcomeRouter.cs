@@ -36,7 +36,7 @@ namespace NHS_HackDay.Routing
     {
       TwilioResponse response = new TwilioResponse();
 
-      var person = directory.FindContact(request.Digits);
+      var person = directory.GetContact(request.Digits);
 
       if (person != null)
       {
@@ -48,7 +48,7 @@ namespace NHS_HackDay.Routing
         }
         else
         {
-          var divertedTo = directory.FindContact(person.DivertToId);
+          var divertedTo = directory.GetContact(person.DivertToId);
 
           if (divertedTo != null)
           {

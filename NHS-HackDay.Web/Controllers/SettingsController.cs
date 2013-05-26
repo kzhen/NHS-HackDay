@@ -16,9 +16,6 @@ namespace NHS_HackDay.Web.Controllers
       this.directory = directory;
     }
 
-    //
-    // GET: /Settings/
-
     public ActionResult Index()
     {
       return View();
@@ -26,11 +23,11 @@ namespace NHS_HackDay.Web.Controllers
 
     public ActionResult Me(string id)
     {
-      var person = directory.FindContact(id);
+      var contact = directory.GetContact(id);
 
-      if (person != null)
+      if (contact != null)
       {
-        return View(person);
+        return View(contact);
       }
 
       return View();

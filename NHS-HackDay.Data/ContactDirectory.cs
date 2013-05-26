@@ -14,8 +14,9 @@ namespace NHS_HackDay.Data
 
     public ContactDirectory()
     {
-      contacts = new List<Contact>();
       teams = new List<Team>();
+
+      contacts = DemoData.GetRandomContacts(5000);
     }
 
     public List<Contact> GetAll()
@@ -23,7 +24,7 @@ namespace NHS_HackDay.Data
       return contacts;
     }
 
-    public Contact FindContact(string id)
+    public Contact GetContact(string id)
     {
       return contacts.SingleOrDefault(m => m.Id == id);
     }
@@ -41,6 +42,13 @@ namespace NHS_HackDay.Data
       {
         contacts.Add(contact);
       }
+    }
+
+    public List<Contact> FindContact(string contactName)
+    {
+      var results = contacts.Where(m => m.Name.Contains(contactName));
+
+      return results.ToList();
     }
   }
 }

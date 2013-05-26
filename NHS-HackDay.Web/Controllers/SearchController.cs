@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NHS_HackDay.Common;
+using NHS_HackDay.Web.Models;
 
 namespace NHS_HackDay.Web.Controllers
 {
@@ -22,15 +23,19 @@ namespace NHS_HackDay.Web.Controllers
       return View(contacts);
     }
 
-    public ActionResult FindPerson()
+    public ActionResult FindContact()
     {
       return View();
     }
 
     [HttpPost]
-    public ActionResult FindPerson(FormCollection form)
+    public ActionResult FindContact(ContactSearchRequest request)
     {
-      return View();
+      var results = directory.FindContact(request.ContactName);
+
+      var model = new SearchResultsViewModel() { Results = results, SearchedValue = request.ContactName };
+
+      return View("SearchResults", model);
     }
   }
 }

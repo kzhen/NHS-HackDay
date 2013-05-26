@@ -1,0 +1,21 @@
+﻿@model NHS_HackDay.Common.ContactSearchRequest
+
+@{
+  ViewBag.Title = "Find Contact";
+}
+
+<h2>Find Person</h2>
+@using (Html.BeginForm())
+{
+  <fieldset>
+    <legend></legend>
+    <label>Name</label>
+    <p>@Html.TextBoxFor(m => m.ContactName)</p>
+    
+    <input type="submit" value="Search!" />
+  </fieldset>
+}
+
+<p>
+  @Html.ActionLink("Full Directory", "Index")
+</p>

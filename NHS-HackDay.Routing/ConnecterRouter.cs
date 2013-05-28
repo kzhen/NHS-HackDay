@@ -57,7 +57,7 @@ namespace NHS_HackDay.Routing
 
         response.Say("We are now contacting " + contact.Name + ", please hold the line");
         response.Dial(new Number(contact.MobileNumber, new { url = string.Format("/Router/PreConnect?callingPartyId={0}", callingPartyId) }), 
-          new { callerId = "+442033229301", timeLimit = 10, action = string.Format("/Router/NextTeamMember?callingPartyId={0}&TeamId={1}&Idx={2}", callingPartyId, teamId, idx) });
+          new { callerId = "+442033229301", timeLimit = 5, action = string.Format("/Router/NextTeamMember?callingPartyId={0}&TeamId={1}&Idx={2}", callingPartyId, teamId, idx) });
       }
       else
       {
@@ -127,7 +127,7 @@ namespace NHS_HackDay.Routing
 
       if (request.Digits == "1")
       {
-        response.Say("Connecting...");
+        response.Say("You are now being connected.");
       }
       else
       {

@@ -27,6 +27,7 @@ namespace NHS_HackDay.Data
 
       t1.TeamMembers.Add(contacts.Single(m => m.Id == "1111"));
       t1.TeamMembers.Add(contacts.Single(m => m.Id == "2222"));
+      t1.TeamMembers.Add(contacts.Single(m => m.Id == "3333"));
 
       teams.Add(t1);
     }
@@ -64,6 +65,7 @@ namespace NHS_HackDay.Data
 
         t1.TeamMembers.Add(contacts.Single(m => m.Id == "1111"));
         t1.TeamMembers.Add(contacts.Single(m => m.Id == "2222"));
+        t1.TeamMembers.Add(contacts.Single(m => m.Id == "3333"));
 
         teams.Add(t1);
       }
